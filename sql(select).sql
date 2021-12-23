@@ -110,3 +110,7 @@
 -- FROM orders
 -- GROUP BY snum;
 
+#Какой продавец получает максимальные комиссионные
+-- SELECT sname,comm
+-- FROM sales_people
+-- WHERE comm = (SELECT MAX(comm) FROM sales_people);
