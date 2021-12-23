@@ -109,8 +109,59 @@
 -- SELECT snum, COUNT(snum)
 -- FROM orders
 -- GROUP BY snum;
-
 #Какой продавец получает максимальные комиссионные
 -- SELECT sname,comm
 -- FROM sales_people
 -- WHERE comm = (SELECT MAX(comm) FROM sales_people);
+#Использование предложения GROUP BY
+
+-- Найти наибольший заказ из тех, что получил каждый из продавцов
+-- SELECT snum, MAX(amt)
+-- FROM orders
+-- GROUP BY snum;
+
+-- Найти сумму заказов по каждому из продавцов
+-- SELECT snum, SUM(amt)
+-- FROM orders
+-- GROUP BY snum;
+
+-- Найти наибольший заказ, сделанный каждым продавцов на каждую дату
+-- SELECT snum, odata, MAX(amt)
+-- FROM orders
+-- GROUP BY snum, odata; 
+
+-- Использование предложения HAVING
+
+-- Найти наибольший заказ, сделанный каждым продавцов на 
+-- каждую дату с покумкой цена которой > 3000
+-- SELECT snum, odata, MAX(amt)
+-- FROM orders
+-- GROUP BY snum, odata
+-- HAVING MAX(amt) > 3000.0; 
+
+-- Работаем с SQL
+
+--  Вывести все заявки за 3 окт 1990 года
+-- SELECT onum, amt, odata
+-- FROM orders
+-- WHERE odata = '1990-03-10';
+
+-- Количество различных городов в таблице покупателей
+-- SELECT count(distinct city)
+-- FROM customers
+-- WHERE city IS NOT NULL;
+
+-- Вывод найменьшего заказа для каждого покупателя
+-- SELECT cnum, MIN(amt)
+-- FROM orders
+-- GROUP BY cnum;
+
+-- Вывод найбольшего рейтинга для каждого города
+-- SELECT city, MAX(rating)
+-- FROM customers
+-- GROUP BY city;
+
+-- Вывод всех продавцов получающих заказы каждый день
+-- SELECT odata, count(distinct snum)
+-- FROM orders,snum
+-- GROUP BY odata;
