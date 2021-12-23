@@ -71,6 +71,42 @@
 
 #Оператор IS с ключевым словом NULL
 #Поиск всех записей с NULL значениями в таблице с покупателями
-SELECT *
-FROM customers
-WHERE city IS NULL;
+-- SELECT *
+-- FROM customers
+-- WHERE city IS NULL;
+#Поиск всех записей с NOT NULL значениями в таблице с покупателями
+-- SELECT *
+-- FROM customers
+-- WHERE city IS NOT NULL;
+
+# Работаем с SQL
+#Выдача сведений о всех заявках принятых 3 или 4 октября 1990
+-- SELECT *
+-- FROM orders
+-- WHERE odata IN('1990-03-10','1990-04-10');
+#Выдача всех покупателей которых обслуживает продавец Peel
+-- SELECT *
+-- FROM customers
+-- WHERE snum  IN(1001,1004);
+#Вывести все заявки у которых поле amt указано 0 или NULL
+-- SELECT *
+-- FROM orders
+-- WHERE amt = 0 OR amt IS NULL;
+
+#Суммирование данных с помощью функций агрегирования
+
+#Найти сумму всех заявок 
+-- SELECT SUM(amt) as money
+-- FROM orders;
+#Поиск среднего значения по всем заказам
+-- SELECT AVG(amt)
+-- FROM orders;
+#Поиск среднего значения по каждому заказу заказу
+-- SELECT onum ,AVG(amt)
+-- FROM orders
+-- GROUP BY onum;
+#Вывести количество заказов оформленных на каждого продавца
+-- SELECT snum, COUNT(snum)
+-- FROM orders
+-- GROUP BY snum;
+
