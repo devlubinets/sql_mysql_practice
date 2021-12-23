@@ -17,3 +17,60 @@
 #5
 -- SELECT DISTINCT snum
 -- FROM orders;
+
+# 4 глава работа с булевыми предикатами
+#OR
+-- SELECT *
+-- FROM customers
+-- WHERE city = 'San Jose'
+-- OR rating >99;1
+#NOT
+-- SELECT *
+-- FROM customers
+-- WHERE city = 'San Jose'
+-- OR NOT rating > 200;
+#NOT
+-- SELECT *
+-- FROM orders
+-- WHERE NOT amt > 100;
+#Скобки
+-- SELECT *
+-- FROM orders
+-- WHERE NOT((odata = '1990-03-10' AND snum > 1002) OR amt > 2000.0);
+
+#3 Работаем с SQL страница 38
+#1) Вернуть все заявки, превыщающие 1000 долларов
+-- SELECT  *
+-- FROM orders
+-- WHERE amt > 1000.0;
+#2) Вернуть именна продавцов и названия городов с города Лондон с комиссионными больше 10%
+-- SELECT sname, city
+-- FROM sales_people
+-- WHERE city = 'London' AND comm > 0.10; 
+#3) Предоставить список всех покупателей чей рейтинг больше или равен 100
+-- SELECT *
+-- FROM customers
+-- WHERE rating >= 100;
+
+# глава 5 Использование специальных операторов в "условиях"
+#Cпециальный оператор IN
+#Найти всех продавцов, расположенных в Лондоне или Барселоне
+-- SELECT sname
+-- FROM sales_people
+-- WHERE city IN('London','Barcelona');
+#Найти всех покупателей обслуживаемых продавцами 1001, 1007, 1004
+-- SELECT cname
+-- FROM customers 
+-- WHERE snum IN(1001, 1007, 1004);
+#Специальный оператор BETWEEN
+#Предоставить имена продавцов с коммиссионными в диапозоне от 10% до 12%
+-- SELECT sname
+-- FROM sales_people
+-- WHERE comm BETWEEN 0.10 AND 0.12;
+#Оператор LIKE
+
+#Оператор IS с ключевым словом NULL
+#Поиск всех записей с NULL значениями в таблице с покупателями
+SELECT *
+FROM customers
+WHERE city IS NULL;
