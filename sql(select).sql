@@ -263,3 +263,31 @@
 -- WHERE customers.rating > 100 AND orders.cnum = customers.cnum 
 --                              AND orders.snum = sales_people.snum;
 
+-- Глава 9. Операция соединения, операнды которой представлены одной таблицей
+-- не понял зачем это нужно
+
+-- Операции соединения одной и той же таблицы используя технологию aliase
+-- SELECT first.cname, second.cname, first.rating
+-- FROM customers first, customers second
+-- WHERE first.rating = second.rating;
+
+-- Работаем c SQL
+-- пропускаю пока данную главу, не понял зачем она нужна
+
+-- Глава 10. Вложенные подзапросы
+
+-- Необходимо извлечь все заказы продавца Motika из таблицы Orders
+-- SELECT *
+-- FROM orders
+-- WHERE snum = (SELECT snum FROM sales_people WHERE sname = 'Motika');
+
+-- Необходимо найти все заказы с которвыми работает продавец, обслуживающий
+-- покупателя Hoffman (cnum = 2001)
+-- SELECT *
+-- FROM orders
+-- WHERE snum = (SELECT snum FROM customers WHERE cname = 'Hoffman');
+
+-- Вывести все заказы, стоимость которых (превышает (1)среднию стоимость заказа за (2)4 окт 1990)
+-- SELECT *
+-- FROM orders
+-- WHERE amt > (SELECT AVG(amt) FROM orders WHERE odata = '1990-03-10');
