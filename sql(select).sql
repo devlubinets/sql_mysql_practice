@@ -165,3 +165,72 @@
 -- SELECT odata, count(distinct snum)
 -- FROM orders,snum
 -- GROUP BY odata;
+
+
+-- Форматирование результатов запросов
+
+-- Вывод всех полей, плюс одного скалярного модифицированного поля комиссионых
+-- SELECT *, comm*100 
+-- FROM sales_people;
+
+-- Вставить символ % в выдачу с результатами
+-- SELECT '%', comm
+-- FROM sales_people;
+
+-- Упорядочивание заявок по номеру по возрастанию при помощи ORDER BY
+-- SELECT * 
+-- FROM orders
+-- ORDER BY onum ASC;
+
+-- Упорядочивание заявок по номеру по убыванию при помощи ORDER BY
+-- SELECT *
+-- FROM orders 
+-- ORDER BY onum DESC;
+
+-- Упорядочивание групп
+-- SELECT snum, odata, MAX(amt)
+-- FROM orders
+-- GROUP BY snum, odata
+-- ORDER BY snum;
+
+-- Упорядочивание по возрастанию по номеру столбца
+-- SELECT sname, comm
+-- FROM sales_people
+-- ORDER BY 2 ASC;
+
+-- Подсчитать количество заявок для каждого продавца и вывести результат в убывающем порядке
+-- SELECT snum, COUNT(onum)
+-- FROM orders
+-- GROUP BY snum1
+-- ORDER BY snum;
+
+-- Работаем с SQL
+-- Выдать номер заявки, номер продавца и общее значение коммисионных продавца,
+-- упорядочить по значениям последнего столбца
+-- SELECT onum, snum, amt*0.12 as comm
+-- FROM orders
+-- ORDER BY amt DESC;
+
+-- Вывести макс рейтинг каждого города и представить в виде:
+-- For the (city), the highest rating is: (rating)
+-- SELECT 'For the city ',city,'the highest rating is:', MAX(rating) as rating
+-- FROM customers
+-- GROUP BY city
+-- ORDER BY rating DESC;
+
+-- Выдать список покупателей в порядке УБЫВАНИЯ
+-- рейтинга 
+-- SELECT rating, cname, cnum
+-- FROM customers
+-- ORDER BY rating DESC
+
+-- Вывод итогов по заказам на каждый день 
+-- список отсортирован в убывающем порядке
+-- SELECT DISTINCT odata, SUM(amt) as sum_pay
+-- FROM orders
+-- GROUP BY odata
+-- ORDER BY odata
+
+
+
+
