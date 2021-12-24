@@ -231,6 +231,35 @@
 -- GROUP BY odata
 -- ORDER BY odata
 
+-- Глава 7 Использование множества таблицalter
+-- в одном запросе
 
+-- Операция "эквисоединения" соединения таблиц посредством ссылочной целостности
+-- SELECT customers.cname, sales_people.sname
+-- FROM customers, sales_people
+-- WHERE sales_people.snum = customers.snum;
 
+-- Работаем с SQL
+
+-- Выдать каждый номер заказа и имя покупателя сделавшего заказ
+-- SELECT orders.onum, customers.cname
+-- FROM orders, customers
+-- WHERE orders.cnum = customers.cnum
+
+-- Выдать после каждого номер заказа имена продавцов и покупателей
+-- SELECT orders.onum, sales_people.sname, customers.cname
+-- FROM orders, sales_people, customers
+-- WHERE orders.snum = sales_people.snum AND orders.cnum = customers.cnum;
+
+-- Выдает имена всех покупателей обслуживаемых продавцами имеющими комиссионные более 12%.
+-- Выходные данные: имя покупателя, имя продавца, комиссионые продавца
+-- SELECT customers.cname, sales_people.sname, sales_people.comm
+-- FROM customers, sales_people, orders
+-- WHERE sales_people.comm > 0.12 AND customers.snum = sales_people.snum;
+
+-- Выдать список заказов, расчетные коммисионные от покупателей с рейтингом более 100
+-- SELECT orders.onum, (orders.amt * sales_people.comm) as total_comm
+-- FROM orders, customers, sales_people
+-- WHERE customers.rating > 100 AND orders.cnum = customers.cnum 
+--                              AND orders.snum = sales_people.snum;
 
